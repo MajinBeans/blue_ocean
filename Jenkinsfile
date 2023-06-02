@@ -19,8 +19,19 @@ pipeline {
     }
 
     stage('Build') {
-      steps {
-        echo 'Build'
+      parallel {
+        stage('Build') {
+          steps {
+            echo 'Build'
+          }
+        }
+
+        stage('Run') {
+          steps {
+            echo 'Run'
+          }
+        }
+
       }
     }
 
